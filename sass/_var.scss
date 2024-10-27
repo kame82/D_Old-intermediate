@@ -1,0 +1,45 @@
+// ベースカラー
+$color-main: #3e3e3e;
+$color-bgk: #f3f3f3;
+$color-accent: #3b69ff;
+$color-text: #3e3e3e;
+$color-text-sub: #ffffff;
+
+// サイズ調整
+$layout-width-inner: 1280px;
+
+//マップ型変数breakpointsを定義
+$breakpoints: (
+  "sm": "screen and (min-width: 600px)",
+  "sp": "screen and (max-width: 767px)",
+  "pc": "screen and (min-width: 768px)",
+  "lg": "screen and (min-width: 980px)",
+  "xl": "screen and (min-width: 1050px)",
+) !default;
+
+//メディアクエリ用のmixinを定義。デフォ値はsp
+@mixin mq($breakpoint: sp) {
+  //map-get(マップ型変数, キー)で値を取得
+  @media #{map-get($breakpoints, $breakpoint)} {
+    //この中をカスタムできる
+    @content;
+  }
+}
+
+// フォント 適切なものに変更！！！！！
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap");
+$font-en: "Montserrat", sans-serif;
+$font-jp: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+
+// ベース設定
+body {
+  font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+  font-size: 14px;
+  // letter-spacing: 1.6;
+  color: $color-text;
+  background-color: $color-bgk;
+
+  @include mq(pc) {
+    font-size: 16px;
+  }
+}
